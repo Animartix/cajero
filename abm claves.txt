@@ -1,0 +1,57 @@
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
+public class Usuario {
+    @Id
+    private int id;
+    private String usuario;
+    private String clave;
+
+}
+
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface UsuarioRepository extends JpaRepository<Usuario, int> {
+
+}
+
+
+
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("/Usuario")
+public class ClaveController {
+    private final ClaveRepository claveRepository;
+
+    public ClaveController(ClaveRepository claveRepository) {
+        this.claveRepository = claveRepository;
+    }
+
+    @GetMapping
+    public Iterable<Clave> listarClaves() {
+        return claveRepository.findAll();
+    }
+
+    @PostMapping
+    public Clave crearClave(@RequestBody Clave clave) {
+        return claveRepository.save(clave);
+    }
+
+    @PutMapping("/{id}")
+    public Clave actualizarClave(@PathVariable Long id, @RequestBody Clave nuevaClave) {
+        return claveRepository.findById(id)
+                .map(clave -> {
+                    clave.setUsuario(nuevaClave.getUsuario());
+                    clave.setClave(nuevaClave.getClave());
+                    return claveRepository.save(clave);
+                })
+                .orElseGet(() -> {
+                    nuevaClave.setId(id);
+                    return claveRepository.save(nuevaClave);
+                });
+    }
+
+}
