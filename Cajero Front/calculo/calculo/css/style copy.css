@@ -1,10 +1,10 @@
 /* =======================INDEX======================== */
 :root {
-    --fuenteHeading:'Roboto Condensed', sans-serif;
-    --fuenteBotones:'Roboto Condensed', sans-serif;
-    --colorPrimario: #cbbfd7;
-    --colorOscuro: #5A3C9B;
-    --colorClaro: #E7D9F4;
+    --fuenteHeading:'EB Garamond', sans-serif;
+    --fuenteBotones:'Roboto Serif', sans-serif;
+    --colorPrimario: #f1edd0;
+    --colorOscuro: #425241;
+    --colorClaro: #cde9ca;
     --colorGris: #e1e1e1;
 }
 body{
@@ -70,6 +70,14 @@ header{
     text-align: center;
     justify-content: center;
     padding: 7rem;
+}
+
+.centrar__logo{
+    display: center;
+    text-align: center;
+    padding: 2rem;
+    width: 100px;
+    height: 100px;
 }
 .alinear__botones{
     display: flex;
@@ -197,6 +205,11 @@ header{
 }
 
 .cbu{
+    margin-bottom: 14rem;
+    display: flex;
+    justify-content: center; 
+}
+.importe{
     margin-bottom: 14rem;
     display: flex;
     justify-content: center; 
@@ -510,5 +523,11 @@ h5{
     h2{
         font-size: 3rem;
     }
+}
+.showtxt{
+    display: block;
+}
 
+.hide{
+    display: none;
 }
